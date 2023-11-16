@@ -1,0 +1,36 @@
+--
+--
+--CREATE TABLE Customer(
+--    customer_id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+--    customer_name varchar(255),
+--    c_phone int,
+--    c_email varchar(100)
+--);
+--
+--
+--CREATE TABLE Room(
+--     room_id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+--     room_no int,
+--     room_type varchar(100),
+--     room_price int
+--);
+--
+--
+--CREATE TABLE User(
+--     user_id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+--     user_name varchar(255),
+--     user_phone int,
+--     user_email varchar(100),
+--     user_password varchar(20)
+--)
+--
+--CREATE TABLE Booking(
+--       booking_id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+--       arrival_date varchar(100),
+--       departure_date varchar(100),
+--       no_of_person int NOT NULL,
+--       FOREIGN KEY (booking_id) REFERENCES Customer(customer_id),
+--       FOREIGN KEY (booking_id) REFERENCES Room(room_id),
+--       FOREIGN KEY (booking_id) REFERENCES User(user_id)
+--)
+--
