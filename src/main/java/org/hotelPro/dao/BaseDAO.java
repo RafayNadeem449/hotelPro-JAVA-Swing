@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class BaseDAO {
     final String DB_URL = "jdbc:mysql://localhost:3306/hotelDB";
-    final String USER = "";
+    final String USER = "root";
     final String PASS = "";
     Connection conn;
 

@@ -1,7 +1,10 @@
 package org.hotelPro.ui;
 
+import org.hotelPro.services.AuthenticationService;
+
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 public class LoginUI {
     public LoginUI() {
@@ -27,7 +30,30 @@ public class LoginUI {
         submitButton.addActionListener((el)->
         {
             frame.dispose();
-            new HomeUI();
+
+            AuthenticationService authenticationService = new AuthenticationService();
+
+            try {
+                if(authenticationService.checkLogin(emailTF.getText(), Integer.valueOf(passwordTF.getText())))
+                {
+                    frame.dispose();
+                    new HomeUI();
+                    System.out.println("Login Successful!");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,
+                            "Wrong Credentials, Try Again!",
+                            "Warning", JOptionPane.WARNING_MESSAGE);
+                    System.out.println("Not Successful!");
+                    new LoginUI();
+                }
+
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+
+            }
         });
 
 
