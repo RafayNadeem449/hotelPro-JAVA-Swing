@@ -1,9 +1,11 @@
 package org.hotelPro.dao;
 
+import org.hotelPro.domain.Room;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class BaseDAO {
+public abstract class BaseDAO {
     final String DB_URL = "jdbc:mysql://localhost:3306/hotelDB";
     final String USER = "root";
     final String PASS = "";
@@ -17,4 +19,8 @@ public class BaseDAO {
         }
 
     }
+
+    public abstract void update(Room obj, Integer roomNo);
+
+    public abstract void deleteById(Integer id);
 }

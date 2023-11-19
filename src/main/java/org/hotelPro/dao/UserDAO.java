@@ -1,5 +1,6 @@
 package org.hotelPro.dao;
 
+import org.hotelPro.domain.Room;
 import org.hotelPro.domain.User;
 import org.hotelPro.mapper.IMapper;
 import org.hotelPro.mapper.UserMapper;
@@ -33,6 +34,20 @@ public class UserDAO extends BaseDAO implements ICrud<User>{
     @Override
     public void insert(User obj) {
 
+        try {
+            PreparedStatement ps = conn.prepareStatement(SQLQueryConstant.INSERT_USER);
+
+            ps.setString(1, obj.getUser_name());
+            ps.setInt(2, obj.getUser_phoneNumber());
+            ps.setString(3, obj.getUser_email());
+            ps.setString(4, obj.getUserPassword());
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
@@ -41,17 +56,25 @@ public class UserDAO extends BaseDAO implements ICrud<User>{
     }
 
     @Override
-    public User getById(Long id) {
+    public User getById(Integer id) {
         return null;
     }
 
+
     @Override
-    public void update(User obj, Long id) {
+    public void update(Room obj, Integer roomNo) {
 
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
+        try {
+            PreparedStatement ps = conn.prepareStatement(SQLQueryConstant.DELETE_USER);
+            ps.setInt(1, id.intValue());
+            ps.executeUpdate();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

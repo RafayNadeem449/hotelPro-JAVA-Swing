@@ -50,6 +50,18 @@ public class UserUI {
             new HomeUI();
         });
 
+        addButton.addActionListener((el)->
+        {
+            frame.dispose();
+            new AddUserUI();
+        });
+
+        deleteButton.addActionListener((el)->
+        {
+            frame.dispose();
+            new DeleteUserUI();
+        });
+
         mainPanel.add(scrollPane);
         frame.add(mainPanel, BorderLayout.CENTER);
 

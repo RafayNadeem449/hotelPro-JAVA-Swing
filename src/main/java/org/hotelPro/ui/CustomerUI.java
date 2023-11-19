@@ -50,6 +50,21 @@ public class CustomerUI {
             new HomeUI();
         });
 
+        addButton.addActionListener((el)->
+        {
+            frame.dispose();
+            new AddCustomerUI();
+        });
+
+        deleteButton.addActionListener((el)->
+        {
+            frame.dispose();
+            new DeleteCustomerUI();
+
+        });
+
+
+
         mainPanel.add(scrollPane);
         frame.add(mainPanel, BorderLayout.CENTER);
 

@@ -11,8 +11,8 @@ import lombok.*;
 public class Room {
 
     private Integer room_id;
-    private Integer room_name;
+    private Integer room_no;
     private String room_type;
-    private String room_price;
+    private Integer room_price;
 
 }

@@ -25,16 +25,14 @@ public class CustomerMapper implements IMapper<Customer> {
 
     @Override
     public Customer resultSetToObject(ResultSet rs) throws SQLException {
-//        if(rs.next()){
-//            return Customer.builder()
-//                    .id((long) rs.getInt(ID))
-//                    .name(rs.getString(NAME))
-//                    .phoneNumber(rs.getString(PHONE_NUMBER))
-//                    .cnic(rs.getString(CNIC))
-//                    .address(rs.getString(ADDRESS))
-//                    .referencePhoneNumber(rs.getString(REFERENCE_PHONE_NUMBER))
-//                    .build();
-//        }
+        if(rs.next()){
+            return   Customer.builder()
+                    .customer_id(rs.getInt("customer_id"))
+                    .name(rs.getString("customer_name"))
+                    .phoneNumber(rs.getInt("c_phone"))
+                    .email(rs.getString("c_email"))
+                    .build();
+        }
         return null;
     }
 }
