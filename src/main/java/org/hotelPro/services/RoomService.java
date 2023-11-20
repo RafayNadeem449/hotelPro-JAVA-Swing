@@ -41,7 +41,7 @@ public class RoomService {
 
     public String[][] getAllRoomForJTable(){
         List<Room> roomList = dao.getAll();
-        return transformToJTable(roomList,5);
+        return transformToJTable(roomList,3);
     }
 
     private String[][] transformToJTable(List<Room> roomList,int columnSize){

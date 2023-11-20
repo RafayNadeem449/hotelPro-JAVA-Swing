@@ -25,6 +25,8 @@ public class SQLQueryConstant {
 
     public final static String GET_ROOMS = "SELECT * FROM Room";
 
+    public final static String GET_USERS = "SELECT * FROM User";
+
 
 
 }

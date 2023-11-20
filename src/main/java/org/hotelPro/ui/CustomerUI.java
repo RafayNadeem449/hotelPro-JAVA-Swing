@@ -1,13 +1,16 @@
 package org.hotelPro.ui;
 
+import org.hotelPro.services.CustomerService;
 import org.hotelPro.ui.HomeUI;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CustomerUI {
+    CustomerService customerService = new CustomerService();
     public CustomerUI() {
         JFrame frame = new JFrame("HotelPro - Customer");
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -31,16 +34,18 @@ public class CustomerUI {
         mainPanel.add(buttonPanel, BorderLayout.EAST);
 
         // Create a JTable with sample data
-        String[] columnNames = {"Room Number", "Room Type", "Status"};
-        String[][] data = {
-                {"101", "Single", "Occupied"},
-                {"102", "Double", "Available"},
-                {"103", "Single", "Occupied"},
-        };
-        JTable dataTable = new JTable(data, columnNames);
+        String[] columnNames = {"ID", "Name", "Email","Phone"};
+
+        String[][] data = customerService.getAllCustomerForJTable();
+
+        DefaultTableModel dtm = new DefaultTableModel(data,columnNames);
+        JTable jt=new JTable(dtm);
+
+        JScrollPane sp=new JScrollPane(jt);
 
 
-        JScrollPane scrollPane = new JScrollPane(dataTable);
+
+        JScrollPane scrollPane = new JScrollPane(sp);
 
         scrollPane.setPreferredSize(new Dimension(600, 200));
 

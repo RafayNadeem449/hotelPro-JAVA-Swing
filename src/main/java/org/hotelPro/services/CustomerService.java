@@ -2,7 +2,8 @@ package org.hotelPro.services;
 
 import org.hotelPro.dao.CustomerDAO;
 import org.hotelPro.domain.Customer;
-import org.hotelPro.domain.Room;
+
+import java.util.List;
 
 public class CustomerService {
 
@@ -27,4 +28,25 @@ public class CustomerService {
     {
         dao.deleteById(id);
     }
+
+
+    public String[][] getAllCustomerForJTable(){
+        List<Customer> customerList = dao.getAll();
+        return transformToJTable(customerList,5);
+    }
+
+    private String[][] transformToJTable(List<Customer> customerList, int columnSize){
+        String[][] data = new String[customerList.size()][columnSize];
+
+
+        for (int i = 0; i < customerList.size() ; i++) {
+            data[i][0] = String.valueOf(customerList.get(i).getCustomer_id());
+            data[i][1] = String.valueOf(customerList.get(i).getName());
+            data[i][2] = customerList.get(i).getEmail();
+            data[i][3] = String.valueOf(customerList.get(i).getPhoneNumber());
+        }
+        return data;
+    }
+
+
 }

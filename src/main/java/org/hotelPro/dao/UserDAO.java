@@ -8,6 +8,7 @@ import org.hotelPro.mapper.UserMapper;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 public class UserDAO extends BaseDAO implements ICrud<User>{
@@ -52,13 +53,19 @@ public class UserDAO extends BaseDAO implements ICrud<User>{
 
     @Override
     public List<User> getAll() {
-        return null;
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(SQLQueryConstant.GET_USERS);
+            return userMapper.resultSetToList(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public User getById(Integer id) {
         return null;
-    }
+    };
 
 
     @Override
